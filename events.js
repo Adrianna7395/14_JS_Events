@@ -9,12 +9,23 @@ btn.addEventListener("click",toogleAppStatus);
 /********  Business-Logic | Toggle **********/
 function toogleAppStatus() {
     appStatus = !appStatus; 
-    output(appStatus);
+    updateView();
 }
 
 /********  View-Schicht **********/
 
+// Modul: Update der View-Schicht | Test:
+// .. View folgt status
+function updateView() {
 
+    if (appStatus) {
+        switchClassName("night");
+    } else {
+        switchClassName("day");
+    }
+
+    
+}
 
 
 
@@ -29,9 +40,6 @@ function switchClassName(modeStr) {
     document.body.children[1].className = modeStr;
 
 }
-
-
-
 
 /* Tools */
 function output(outputData) {
