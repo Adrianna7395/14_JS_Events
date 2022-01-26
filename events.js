@@ -4,10 +4,16 @@ let appStatus =true;
 
 /********  Event-Listener **********/
 
-btn.addEventListener("click",toogleAppStatus);
+// Webseite geladen --> auf (Anfangs)-Zustand umschalten
+window.addEventListener("load",toggleAppStatus);
+
+// Klick auf Btn  --> Zustand umschalten
+btn.addEventListener("click",toggleAppStatus);
 
 /********  Business-Logic | Toggle **********/
-function toogleAppStatus() {
+
+// Wechselschalter:  true = !false | false = !true
+function toggleAppStatus() {
     appStatus = !appStatus; 
     updateView();
 }
@@ -17,17 +23,14 @@ function toogleAppStatus() {
 // Modul: Update der View-Schicht | Test:
 // .. View folgt status
 function updateView() {
-
     if (appStatus) {
         switchClassName("night");
+        switchBtnTxt("day");
     } else {
         switchClassName("day");
+        switchBtnTxt("night");
     }
-
-    
 }
-
-
 
 // Modul: Umschaltung Klassenamen | Test:
 // switchClassName("night");
@@ -40,6 +43,13 @@ function switchClassName(modeStr) {
     document.body.children[1].className = modeStr;
 
 }
+
+// Modul: Umschaltung BtnTxt | Test:
+// switchBtnTxt("night");
+// switchBtnTxt("day");
+function switchBtnTxt(modeStr) {
+    btn.innerHTML = modeStr;
+ }
 
 /* Tools */
 function output(outputData) {
